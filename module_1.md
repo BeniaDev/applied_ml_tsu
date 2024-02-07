@@ -100,10 +100,10 @@ Which builds docker image and spins up container with the necessary parameters.
 
 
 P.S if you will have Accuracy == 1.0 on closed test set it will be interesting.
-
+Please, note that cheating with metrics will lead you to the grade 0.
 
 __Total: 40 points__  
-Please, note that cheating with metrics will lead you to the grade 0.
+
 
 ###### 4.2 MLOps part  
   
