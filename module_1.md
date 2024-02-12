@@ -60,7 +60,7 @@ foo@bar:~$ python model.py predict --dataset=/path/to/evaluation/dataset
 - Submission on kaggle competition with [Classification Accuracy](https://developers.google.com/machine-learning/crash-course/classification/accuracy) > 0.7
   
 ### Dataset
-Here the competition on Kaggle with Dataset: https://www.kaggle.com/competitions/hits-2024-spaceship-titanic-1st-module
+Here the competition on Kaggle with Dataset: [link](https://www.kaggle.com/t/20c5bb889f2a46c78c11aa38a7b051fd)
 
 
 
