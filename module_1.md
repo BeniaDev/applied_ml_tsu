@@ -38,7 +38,7 @@ You can do everything like Linux users in this task and feel yourself comfortabl
 ### Requirements
 We don't accept homework if any of the following requirements are not satisfied:
 - The code should be situated in a public github (or gitlab) repository. Two branches: `dev` for development and `master` for the latest working version.
-- You should build your project using [poetry](https://python-poetry.org/docs/) to freeze dependendecies of python packages you use. And attach your .whl file
+- You should build your project using [poetry](https://python-poetry.org/docs/) to freeze dependendecies of python packages you use. And attach your .whl file. Or if you want you can add only poetry.lock file to your repo.
 - Readable and Understandable `README.md` file:
     - Your fullname & group
     - "**How To**" for your repo: train model, evaluate, deploy. With and without docker.
@@ -54,7 +54,8 @@ foo@bar:~$ python model.py train --dataset=/path/to/train/dataset
 foo@bar:~$ python model.py predict --dataset=/path/to/evaluation/dataset
 ```
 - `.ipynb notebook`  in your repo folder `./notebooks/` with your final submission creation and [Optuna framework](https://optuna.org/) usage. You have to optimize your Gradient Boosting [Catboost](https://catboost.ai/) Classifer using Optuna.
- - `Dockerfile`
+- Flask Application (feel free to use FastAPI or other frameworks) flask_app.py. Runs REST API service on port 5000.
+- `Dockerfile`
 - `docker-compose.yaml`
 - Submission on kaggle competition with [Classification Accuracy](https://developers.google.com/machine-learning/crash-course/classification/accuracy) > 0.7
   
@@ -111,8 +112,9 @@ __Total: 40 points__
 |--------------|-----------|------------|
 | 15     | model.py      |    The model is properly packed into the class inside *.py file. CLI interface works well: train, predict.      |
 | 10     |Code quality   | Clear OOP pattern. Well in-code comments. Build-in documentation for each function. No code duplicates. Meaningful variable names       |
-| 15     |Poetry usage   | .whl file created useing poetry. And pip install your_package.whl works.     |
-| 15 | Optuna usage | Final models hyperparameters found using Optuna. |
+| 5     |Poetry usage   | .whl file created useing poetry. And pip install your_package.whl works. Or working poetry.lock file     |
+| 10 | Optuna usage | Final models hyperparameters found using Optuna. Optional: use wandb.ai to create great post optimization process artifacts [hint](https://github.com/optuna/optuna-examples/blob/main/wandb/wandb_integration.py) |
+| 5 | REST API | Working API with Flask and WSGI. Endpoints according to description above. Catch and log 500. |
 | 5      | Logging       |Catch and log all possible errors. Singleton logging pattern (use logging module)      |
 | 5      | git workflow  | Publicly available repo. dev and master branches. Regular Commits. No Commit Rush. Meaningful comment for each commit.    |
 | 3      | docker        | working API in a docker container. Shared folder for all the artifacts (model files, logs, model predictions)      |
