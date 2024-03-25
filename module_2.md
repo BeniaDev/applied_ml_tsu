@@ -5,8 +5,8 @@ __DEADLINE:  --.--.2024__
 
 ### "Time to Detect LLM Generated Texts"
 
-You have to help Online Platform for english level test, where students write essays for time to pass the exam. After Large Language Model like ChatGPT release they found the problem, students start generate essays by GPT.
-Now they ask you to create the algorithm to detect LLM generated texts.
+You have to help Online Platform for english level test, where students write essays for time to pass the exam. After Large Language Model like ChatGPT released they found the problem, that students start generate essays by GPT.
+Now they ask you to create the algorithm to detect LLM generated essays.
 
 
 ### Task
@@ -36,23 +36,21 @@ We don't accept homework if any of the following requirements are not satisfied:
 foo@bar:~$ python model.py train --dataset=/path/to/train/dataset
 foo@bar:~$ python model.py predict --dataset=/path/to/evaluation/dataset
 ```
- - `Dockerfile`
+- `Dockerfile`
 - `docker-compose.yaml`
 - Submission on kaggle competition with [ROC AUC](https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc) > 0.7
   
 ### Dataset
-Here the competition on Kaggle with Dataset: https://www.kaggle.com/competitions/llm-detect-ai-generated-text/
+Here the competition on Kaggle with Dataset: [kaggle competition](https://www.kaggle.com/competitions/llm-detect-ai-generated-text/)
 
-BUT we have a problem, we have only prompts which used in test set to generate Essays to check you generated text model quality and little train dataset. YOU expected collect (generate find in open data sources) datasets with written and generated essays/ texts by LLM and train your classifier.
-
-
+BUT we have a problem, we have only prompts which used in test set to generate Essays to check you generated text model quality and little train dataset. YOU expected collect (generate or find in open data sources) datasets with written and generated essays/texts by LLM and train your classifier.
 
 
 ### Project Milestones
 ##### 1. Data Science in Jupyter
 Feel free to stick to Jupyter or Colab environment. Here we expect you to build two classifier models. 
  1) Baseline classifier. You can start from just rules with heuristics you have to find together. Also recommend try TF-IDF with you favourite classic classifer method.
- 2) Neural Classifer. Model Backbone you can choose BERT, or try RNN, LSTM acrhitectures. 
+ 2) Neural Classifer. Model Backbone you can choose BERT, or try RNN, LSTM acrhitectures or give a chance  LLAMA/GPT/Mistral models
 
 For both tasks, please, refer to target metrics at the end of README.
 Pay attention, here you will create submissions on Kaggle platform using created your own notebook with your model.
@@ -75,37 +73,35 @@ foo@bar:~$ pip install your_file.whl
 | Points         | ROC AUC     | Description |
 |--------------|-----------|------------|
 | 0       | < 0.5      |        |
-| 20      | [0.7; 0.75)| Good Baseline.       |
-| 10      | [0.75; 0.85] | Close to SOTA      |
-| 10      | > 0.85  |  SOTA?       |  
+| 10      | [0.7; 0.75)| Good Baseline.       |
+| 20      | [0.75; 0.85] | Close to SOTA      |
+| 20      | > 0.85  |  SOTA?       |  
 
 
-
-
-__Total: 40 points__  
+__Total: 50 points__  
 Please, note that cheating with metrics will lead you to the grade 0.
 
 ###### 4.2 MLOps part  
   
 | Points         | Bulletpoint     | Description |
 |--------------|-----------|------------|
-| 15     | model.py      |    The model is properly packed into the class inside *.py file. CLI interface works well: train, predict.      |
+| 10     | model.py      |    The model is properly packed into the class inside *.py file. CLI interface works well: train, predict.      |
 | 10     |Code quality   | Clear OOP pattern. Well in-code comments. Build-in documentation for each function. No code duplicates. Meaningful variable names       |
-| 15     |Poetry usage   | .whl file created useing poetry. And pip install your_package.whl works.     |
-| 15 | Optuna usage | Final models hyperparameters found using Optuna. |
+| 10     |Poetry usage   | .whl file created useing poetry. And pip install your_package.whl works.     |
+| 5 | Wandb Your Model Training Artifacts  | You log all your model train process using [Wandb](https://wandb.ai/site) (or local [MLFLOW](https://mlflow.org/)) |
 | 5      | Logging       |Catch and log all possible errors. Singleton logging pattern (use logging module)      |
 | 5      | git workflow  | Publicly available repo. dev and master branches. Regular Commits. No Commit Rush. Meaningful comment for each commit.    |
 | 3      | docker        | working API in a docker container. Shared folder for all the artifacts (model files, logs, model predictions)      |
 | 2      |docker-compose | working docker-compose file       |
 
 
-__Total: 60 points__ 
+__Total: 50 points__ 
 
 
 
 ###### Bonus Part
 You can find Data Science article in the field you want to go deeper (e.x Natural Language Processing, Computer Vision, Reinforcement Learning). If you want, you can always ask me about help and we will find together interesting article for you.
 
-After you read whole article you can prepare fast review and we can discuss it together, like it happens in [DS Talks Siberia seminars](https://t.me/+fQ07VSVJ2V8yZGYy).
+After you read whole article you can prepare fast review and we can discuss it together, like it happens in [DS Talks Siberia seminars](https://t.me/+fQ07VSVJ2V8yZGYy), seminars recordings available on [Youtube](https://www.youtube.com/channel/UCKi44xqXU67E3dv5e0b_0Dg).
 
 __Total: 20 points__  Over all points at this task.
