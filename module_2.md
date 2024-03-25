@@ -38,7 +38,8 @@ foo@bar:~$ python model.py predict --dataset=/path/to/evaluation/dataset
 ```
 - `Dockerfile`
 - `docker-compose.yaml`
-- Submission on kaggle competition with [ROC AUC](https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc) > 0.7
+- Submission on kaggle competition with [ROC AUC](https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc) > 0.7.
+Read more about the metric [here](https://alexanderdyakonov.wordpress.com/2017/07/28/auc-roc-%D0%BF%D0%BB%D0%BE%D1%89%D0%B0%D0%B4%D1%8C-%D0%BF%D0%BE%D0%B4-%D0%BA%D1%80%D0%B8%D0%B2%D0%BE%D0%B9-%D0%BE%D1%88%D0%B8%D0%B1%D0%BE%D0%BA/)
   
 ### Dataset
 Here the competition on Kaggle with Dataset: [kaggle competition](https://www.kaggle.com/competitions/llm-detect-ai-generated-text/)
