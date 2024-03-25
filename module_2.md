@@ -76,10 +76,10 @@ foo@bar:~$ pip install your_file.whl
 | 0       | < 0.5      |        |
 | 10      | [0.7; 0.75)| Good Baseline.       |
 | 20      | [0.75; 0.85] | Close to SOTA      |
-| 20      | > 0.85  |  SOTA?       |  
+| 25      | > 0.85  |  SOTA?       |  
 
 
-__Total: 50 points__  
+__Total: 55 points__  
 Please, note that cheating with metrics will lead you to the grade 0.
 
 ###### 4.2 MLOps part  
@@ -88,7 +88,7 @@ Please, note that cheating with metrics will lead you to the grade 0.
 |--------------|-----------|------------|
 | 10     | model.py      |    The model is properly packed into the class inside *.py file. CLI interface works well: train, predict.      |
 | 10     |Code quality   | Clear OOP pattern. Well in-code comments. Build-in documentation for each function. No code duplicates. Meaningful variable names       |
-| 10     |Poetry usage   | .whl file created useing poetry. And pip install your_package.whl works.     |
+| 15     |Poetry usage   | .whl file created useing poetry. And pip install your_package.whl works.     |
 | 5 | Wandb Your Model Training Artifacts  | You log all your model train process using [Wandb](https://wandb.ai/site) (or local [MLFLOW](https://mlflow.org/)) |
 | 5      | Logging       |Catch and log all possible errors. Singleton logging pattern (use logging module)      |
 | 5      | git workflow  | Publicly available repo. dev and master branches. Regular Commits. No Commit Rush. Meaningful comment for each commit.    |
@@ -96,7 +96,7 @@ Please, note that cheating with metrics will lead you to the grade 0.
 | 2      |docker-compose | working docker-compose file       |
 
 
-__Total: 50 points__ 
+__Total: 45 points__ 
 
 
 
