@@ -1,4 +1,4 @@
-# Homework 1 
+# Homework 2
 Classic ML with cats and MLOPS stuff.
 
 __DEADLINE:  --.--.2024__
@@ -30,10 +30,9 @@ We don't accept homework if any of the following requirements are not satisfied:
 - Proper `.gitignore` file. You do not want rubbish in your repo.
 - The major software artifact is `model.py`, containing the class `My_TextClassifier_Model` with following methods:
     - `train`. Recieves the dataset filename. Performes model training. Saves the artifacts to `./model/`. Logs the results.
-    - `predict`. Recieves the dataset filename. Loads the model from `./data/model/`. Saves prediction to `./data/results.csv`.
+    - `predict`. Recieves the text. Return predicted probability human/generated class, logs to file predicition results: `./data/results.csv`.
 - An integrated script for training and evaluation from CLI (check out `if __name__ == '__main__':`) so that:
 ```console
-foo@bar:~$ python model.py train --dataset=/path/to/train/dataset
 foo@bar:~$ python model.py predict --dataset=/path/to/evaluation/dataset
 ```
 - `Dockerfile`
@@ -58,6 +57,8 @@ Pay attention, here you will create submissions on Kaggle platform using created
 
 Catch up the baseline.ipynb on rules with Kaggle submission format creation [colab](https://drive.google.com/file/d/1cNO3m8OQCueCOU4TQOP50pUlyc-JVjfq/view?usp=sharing)
 
+**Note!**: your model train process can stay in clean jupyter notebook file, you should pack to app **only** the model inference.
+
 ##### 2. Pack into git repo
 At this point we expect to see fully working CLI application in the `master` branch. 
 For example read more about [Fire](https://google.github.io/python-fire/guide/)
@@ -76,27 +77,28 @@ foo@bar:~$ pip install your_file.whl
 | 0       | < 0.5      |        |
 | 10      | [0.7; 0.75)| Good Baseline.       |
 | 20      | [0.75; 0.85] | Close to SOTA      |
-| 25      | > 0.85  |  SOTA?       |  
+| 20      | > 0.85  |  SOTA?       |  
 
 
-__Total: 55 points__  
+__Total: 50 points__  
 Please, note that cheating with metrics will lead you to the grade 0.
 
 ###### 4.2 MLOps part  
   
 | Points         | Bulletpoint     | Description |
 |--------------|-----------|------------|
-| 10     | model.py      |    The model is properly packed into the class inside *.py file. CLI interface works well: train, predict.      |
+| 15 | [ONNX](https://github.com/onnx/onnx) neural classifier inference | You should use .onnx format for you model to speed up the inference of your model. You can use optimum to convert your model to onnnx format and run the inference. Hints: [1](https://www.philschmid.de/convert-transformers-to-onnx); [2](https://github.com/huggingface/optimum) |
 | 10     |Code quality   | Clear OOP pattern. Well in-code comments. Build-in documentation for each function. No code duplicates. Meaningful variable names       |
-| 15     |Poetry usage   | .whl file created useing poetry. And pip install your_package.whl works.     |
+| 5     | model.py      |    The model is properly packed into the class inside *.py file. CLI interface works well: predict.      |
 | 5 | Wandb Your Model Training Artifacts  | You log all your model train process using [Wandb](https://wandb.ai/site) (or local [MLFLOW](https://mlflow.org/)) |
 | 5      | Logging       |Catch and log all possible errors. Singleton logging pattern (use logging module)      |
-| 5      | git workflow  | Publicly available repo. dev and master branches. Regular Commits. No Commit Rush. Meaningful comment for each commit.    |
+| 3      | git workflow  | Publicly available repo. dev and master branches. Regular Commits. No Commit Rush. Meaningful comment for each commit.    |
+| 2      | Poetry usage   | .whl file created useing poetry. And pip install your_package.whl works.     |
 | 3      | docker        | working API in a docker container. Shared folder for all the artifacts (model files, logs, model predictions)      |
 | 2      |docker-compose | working docker-compose file       |
 
 
-__Total: 45 points__ 
+__Total: 50 points__ 
 
 
 
