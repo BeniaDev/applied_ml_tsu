@@ -46,9 +46,9 @@ Feel free to stick to Jupyter or Colab environment. Here we expect you to build 
  2) Neural Classifer.
 
 Hope one of this link will help you:
-https://deepayan137.github.io/blog/markdown/2020/08/29/building-ocr.html
-https://paperswithcode.com/task/optical-character-recognition
-https://github.com/GitYCC/crnn-pytorch
+* https://deepayan137.github.io/blog/markdown/2020/08/29/building-ocr.html
+* https://paperswithcode.com/task/optical-character-recognition
+* https://github.com/GitYCC/crnn-pytorch
 
 For both tasks, please, refer to target metrics at the end of README.
 
