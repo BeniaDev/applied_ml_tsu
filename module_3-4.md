@@ -37,7 +37,7 @@ foo@bar:~$ python model.py predict --dataset=/path/to/evaluation/dataset
 ### Dataset
 You can generate dataset by this script: [Captcha generator](https://github.com/IvanArsenev/Captcha-solver). You are free to use any open source dataset you will find.
 
-We will measure the **Final Accuracy** using the test set. The download link for the test set will be provided by Ivan Arsenev.
+We will measure the **Final Accuracy** using the [test set](https://drive.google.com/file/d/13WTTaDT9my8Ak8nfhla-3_HCf-H2pFGN/view?usp=sharing). The download link for the test set will be provided by Ivan Arsenev.
 
 ### Project Milestones
 ##### 1. Data Science in Jupyter
