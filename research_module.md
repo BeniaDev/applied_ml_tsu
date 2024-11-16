@@ -38,7 +38,7 @@ Points Maximum: 200
 
 1. 📚 [Natural Language Processing Course](https://huggingface.co/learn/nlp-course/)  
    *Learn how to process and analyze natural language data using deep learning techniques.*
-   *As assignment on this course you need:
+   As assignment on this course you need:
    - Complete quizes at course
    - https://www.kaggle.com/competitions/nlp-getting-started make any submission better than sample submission score (or on this competition https://www.kaggle.com/competitions/llm-classification-finetuning). And provide screenshot of your submission at kaggle leaderboard.
  
@@ -48,7 +48,7 @@ Points Maximum: 200
 
 3. 🖼️ [Computer Vision Course](https://huggingface.co/learn/computer-vision-course/unit0/welcome/welcome)  
    *Dive into techniques for enabling machines to interpret and understand visual information from the world.*
-   *As assignment on this course you need:
+   As assignment on this course you need:
    - Choose any CV tasks from the list of tasks in the course
    - Training/fine-tuning a Model
    - Building an application and hosting it on Hugging Face Spaces
@@ -58,18 +58,18 @@ Points Maximum: 200
 
 5. 🎲 [Machine Learning Games Course](https://huggingface.co/learn/ml-games-course/unit0/introduction)  
    *Learn how to create engaging games using machine learning algorithms.*
-   *As assignment on this course you need:
+   As assignment on this course you need:
    - Show me your project from any Unit of this course
    Yeah it is the most fun course on Hugging Face
 
 6. 🌌 [Diffusion Models Course](https://huggingface.co/learn/diffusion-course/unit0/1)  
    *Understand diffusion models and their applications in generating high-quality data.*
-   *As assignment on this course you need:
+   As assignment on this course you need:
    - Show me your trained model on Hugging Face Spaces from any Unit of this course
 
 7. 🏗️ [Machine Learning for 3D Course](https://huggingface.co/learn/ml-for-3d-course/unit0/introduction)  
    *Explore techniques for applying machine learning in three-dimensional spaces and environments.*
-   *As assignment on this course you need:
+   As assignment on this course you need:
    - Upload links to Google Classroom and show your trained models on Hugging Face Spaces from Units of this course
 
 ## Deadline
