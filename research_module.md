@@ -1,5 +1,18 @@
 # Research Assignment: Deep Learning Immersion through Hugging Face Courses
 
+## Why i should do this?
+- It will give you good pet project for your portfolio
+- You will get the deep-dive into the one of Machine Learning fields and it will be a great start to find your specialization.
+
+Just check this career opportunities:
+- [Meta ML Engineers Internship](https://www.metacareers.com/jobs?roles[0]=Internship)
+- [Yandex Research ML Researcher](https://yandex.com/jobs/vacancies/researcher-machine-learning-1528)
+- [Yandex Research ML Residency](https://yandex.com/jobs/vacancies/yandex-research-ml-residency-1740)
+- [Anthropic: Machine Learning Systems Engineer](https://boards.greenhouse.io/anthropic/jobs/4180125008)  
+- [Mistral AI: Software Engineer, Inference](https://jobs.lever.co/mistral/162f82e4-2503-4c8b-a05e-64f70ae9d7e1)
+- [Mistral AI: AI Scientist - Internship - Master's students](https://jobs.lever.co/mistral/292397f0-4ac7-4309-a0e8-63c97761a2cb)
+
+
 
 ## Assignment Description
 
@@ -28,6 +41,7 @@ Points Maximum: 200
    *As assignment on this course you need:
    - Complete quizes at course
    - https://www.kaggle.com/competitions/nlp-getting-started make any submission better than sample submission score (or on this competition https://www.kaggle.com/competitions/llm-classification-finetuning). And provide screenshot of your submission at kaggle leaderboard.
+ 
    
 2. 🎮 [Deep Reinforcement Learning Course](https://huggingface.co/learn/deep-rl-course/unit0/introduction)  
    *Explore the principles of reinforcement learning and how to apply them in various environments.*
