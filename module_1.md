@@ -114,7 +114,7 @@ __Total: 30 points__
 | 5      | Log Best Performance Model to ClearML | Best model weights uploaded to ClearMl Server.      |
 
 
-__Total: 60 points__ 
+__Total: 70 points__ 
 
 
 
