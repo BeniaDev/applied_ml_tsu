@@ -77,7 +77,7 @@ For example read more about [Fire](https://google.github.io/python-fire/guide/)
 ###### 3.1 Poetry
 Create using poetry .whl file with your python packages dependencies. And command below works:
 ```console
-foo@bar:~$ pip install your_filre.whl 
+foo@bar:~$ pip install your_file.whl 
 ```
 
 Which builds docker image and spins up container with the necessary parameters.
