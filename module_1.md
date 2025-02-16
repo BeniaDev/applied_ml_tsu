@@ -37,8 +37,8 @@ You can do everything like Linux users in this task and feel yourself comfortabl
 --------------
 ### Requirements
 We don't accept homework if any of the following requirements are not satisfied:
-- The code should be situated in a public github (or gitlab) repository. Two branches: `dev` for development and `master` for the latest working version.
-- You should build your project using [poetry](https://python-poetry.org/docs/) to freeze dependendecies of python packages you use. And attach your .whl file. Or if you want you can add only poetry.lock file to your repo.
+- The code should be situated in a public github (or gitlab) repository. Two branches: `develop` for development and `master` for the latest working version.
+- You should build your project using [poetry](https://python-poetry.org/docs/) to freeze dependendecies of python packages you use. And attach your .whl file. Or if you want you can add only poetry.lock file to your repo. Alternatively, you can use [UV](https://github.com/astral-sh/uv).
 - Readable and Understandable `README.md` file:
     - Your fullname & group
     - "**How To**" for your repo: train model, evaluate, deploy. With and without docker.
@@ -110,7 +110,7 @@ __Total: 30 points__
 | 10 | Optuna usage | Final models hyperparameters found using Optuna. Optional: use wandb.ai to create great post optimization process artifacts [hint](https://github.com/optuna/optuna-examples/blob/main/wandb/wandb_integration.py) |
 | 5      | Log Final Train / Test dataset to ClearML      | Upload your dataset to your ClearML Server.    |
 | 5      | Log Best Performance Model to ClearML | Best model weights uploaded to ClearMl Server.      |
-| 5      | git workflow  | Publicly available repo. dev and master branches. Regular Commits. No Commit Rush. Meaningful comment for each commit.    |
+| 5      | git workflow  | Publicly available repo. develop and master branches. Regular Commits. No Commit Rush. Meaningful comment for each commit.    |
 
 
 __Total: 70 points__ 
