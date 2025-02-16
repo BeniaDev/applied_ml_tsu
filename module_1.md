@@ -54,7 +54,6 @@ foo@bar:~$ python model.py train --dataset=/path/to/train/dataset
 foo@bar:~$ python model.py predict --dataset=/path/to/evaluation/dataset
 ```
 - `.ipynb notebook`  in your repo folder `./notebooks/` with your final submission creation and [Optuna framework](https://optuna.org/) usage. You have to optimize your Gradient Boosting [Catboost](https://catboost.ai/) Classifer using Optuna.
-- Flask Application (feel free to use FastAPI or other frameworks) flask_app.py. Runs REST API service on port 5000.
 - Submission on kaggle competition with [Classification Accuracy](https://developers.google.com/machine-learning/crash-course/classification/accuracy) > 0.7
   
 ### Dataset
@@ -122,5 +121,8 @@ __Total: 70 points__
 You can find Data Science article in the field you want to go deeper (e.x Natural Language Processing, Computer Vision, Reinforcement Learning). If you want, you can always ask me about help and we will find together interesting article for you.
 
 After you read whole article you can prepare fast review and we can discuss it together, like it happens in [DS Talks Siberia seminars](https://t.me/+fQ07VSVJ2V8yZGYy).
+
+Or you can just present paper your want on any our class time. 
+[Papers examples list:](https://docs.google.com/spreadsheets/d/1G0ShaZwP7rjpGKG6-ReO6i9Yr9H5o0zAVfQ-SFYaOrQ/edit?usp=sharing)
 
 __Total: 20 points__  Over all points at this task.
