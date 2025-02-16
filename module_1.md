@@ -122,7 +122,7 @@ You can find Data Science article in the field you want to go deeper (e.x Natura
 
 After you read whole article you can prepare fast review and we can discuss it together, like it happens in [DS Talks Siberia seminars](https://t.me/+fQ07VSVJ2V8yZGYy).
 
-Or you can just present paper your want on any our class time. 
+Or you can just present paper you want on any our class. 
 [Papers examples list:](https://docs.google.com/spreadsheets/d/1G0ShaZwP7rjpGKG6-ReO6i9Yr9H5o0zAVfQ-SFYaOrQ/edit?usp=sharing)
 
 __Total: 20 points__  Over all points at this task.
