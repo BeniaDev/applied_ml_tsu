@@ -118,11 +118,11 @@ __Total: 70 points__
 
 
 ###### Bonus Part
-You can find Data Science article in the field you want to go deeper (e.x Natural Language Processing, Computer Vision, Reinforcement Learning). If you want, you can always ask me about help and we will find together interesting article for you.
+You can find data science articles in the fields you want to explore (e.g., natural language processing, computer vision, reinforcement learning). 
 
-After you read whole article you can prepare fast review and we can discuss it together, like it happens in [DS Talks Siberia seminars](https://t.me/+fQ07VSVJ2V8yZGYy).
+If you need help, you can ask me and we will look for interesting articles together.After reading the whole article, you can quickly prepare a review and we will discuss it, just like in DS Talks seminars in [DS Talks Siberia seminars](https://t.me/+fQ07VSVJ2V8yZGYy).
 
-Or you can just present paper you want on any our class. 
-[Papers examples list:](https://docs.google.com/spreadsheets/d/1G0ShaZwP7rjpGKG6-ReO6i9Yr9H5o0zAVfQ-SFYaOrQ/edit?usp=sharing)
+Or you can simply present a paper you have written in any of our classes. 
+[Here are some examples of papers:](https://docs.google.com/spreadsheets/d/1G0ShaZwP7rjpGKG6-ReO6i9Yr9H5o0zAVfQ-SFYaOrQ/edit?usp=sharing)
 
 __Total: 20 points__  Over all points at this task.
