@@ -68,7 +68,7 @@ Here the competition on Kaggle with Dataset: [link](https://www.kaggle.com/t/20c
 ##### 1. Data Science in Jupyter
 Feel free to stick to Jupyter or Colab environment. Here we expect you to build two classifier models. 
  1) A baseline classifier, here you can start with Logistic Regression or Random Forest Classifier or anything else you want.
- 2) Catboost Classifier.
+ 2) Catboost Classifier. Or any other Gradient Boosting you want. (LightGBM, XGBoost, TabNet)
 
 For both tasks, please, refer to target metrics at the end of README.
 
@@ -82,11 +82,6 @@ Create using poetry .whl file with your python packages dependencies. And comman
 ```console
 foo@bar:~$ pip install your_filre.whl 
 ```
-###### 3.2 Docker
-Create a `docker-compose.yaml` file, so that you can start the service in a single command
-```console
-foo@bar:~$ docker compose up
-```
 
 Which builds docker image and spins up container with the necessary parameters.
 
@@ -96,14 +91,14 @@ Which builds docker image and spins up container with the necessary parameters.
 |--------------|-----------|------------|
 | 0       | < 0.5      |        |
 | 20      | [0.7; 0.75)| Good Baseline.       |
-| 10      | [0.75; 0.82] | Close to SOTA      |
-| 10      | > 0.82  |  SOTA?       |  
+| 5      | [0.75; 0.82] | Close to SOTA      |
+| 5      | > 0.82  |  SOTA?       |  
 
 
 P.S if you will have Accuracy == 1.0 on closed test set it will be interesting.
 Please, note that cheating with metrics will lead you to the grade 0.
 
-__Total: 40 points__  
+__Total: 30 points__  
 
 
 ###### 4.2 MLOps part  
@@ -111,14 +106,15 @@ __Total: 40 points__
 | Points         | Bulletpoint     | Description |
 |--------------|-----------|------------|
 | 15     | model.py      |    The model is properly packed into the class inside *.py file. CLI interface works well: train, predict.      |
-| 10     |Code quality   | Clear OOP pattern. Well in-code comments. Build-in documentation for each function. No code duplicates. Meaningful variable names       |
-| 5     |Poetry usage   | .whl file created useing poetry. And pip install your_package.whl works. Or working poetry.lock file     |
+| 5     | Code quality   | Clear OOP pattern. Well in-code comments. Build-in documentation for each function. No code duplicates. Meaningful variable names       |
+| 5     | Poetry or [UV](https://github.com/astral-sh/uv) usage   | .whl file created useing poetry. And pip install your_package.whl works. Or working poetry.lock file     |
+| 15 | ClearML usage| Screenshots from your local hosted ClearML. You have to show artifacts from ClearML where you find best parameters using optuna. [hint1](https://clear.ml/docs/latest/docs/clearml_serving/clearml_serving_setup/) [hint2](https://clear.ml/docs/latest/docs/integrations/catboost)  [hint3](https://clear.ml/docs/latest/docs/guides/optimization/hyper-parameter-optimization/examples_hyperparam_opt) |
 | 10 | Optuna usage | Final models hyperparameters found using Optuna. Optional: use wandb.ai to create great post optimization process artifacts [hint](https://github.com/optuna/optuna-examples/blob/main/wandb/wandb_integration.py) |
 | 5 | REST API | Working API with Flask and WSGI. Endpoints according to description above. Catch and log 500. |
-| 5      | Logging       |Catch and log all possible errors. Singleton logging pattern (use logging module)      |
+| 5      | Logging       | Catch and log all possible errors. Singleton logging pattern (use logging module).    |
 | 5      | git workflow  | Publicly available repo. dev and master branches. Regular Commits. No Commit Rush. Meaningful comment for each commit.    |
-| 3      | docker        | working API in a docker container. Shared folder for all the artifacts (model files, logs, model predictions)      |
-| 2      |docker-compose | working docker-compose file       |
+| 3      | Log Final Train / Test dataset to ClearML      | Upload your dataset to your ClearML Server.    |
+| 2      | Log Best Performance Model to ClearML | Best model weights uploaded to ClearMl Server.      |
 
 
 __Total: 60 points__ 
