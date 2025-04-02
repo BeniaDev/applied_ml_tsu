@@ -15,8 +15,8 @@ __DEADLINE:  --.--.2025__
 #### Triton inference server:
 - https://github.com/triton-inference-server/tutorials
 
-Get ready: NVIDIA's documentation can sometimes be incomplete or contain inaccuracies. It's recommended to:
-- Check the official GitHub issues for known problems and workarounds
+Get ready: NVIDIA's documentation can sometimes be incomplete or contain inaccuracies. 
+Don`t forget check the official GitHub issues for known problems and workarounds, or ask any question at course chat.
 
 ### Intro
 
