@@ -1,19 +1,23 @@
 # Homework 2
-Classic ML with cats and MLOPS stuff.
+Natural Language Processing and Triton Inference Servers.
 
-__DEADLINE:  --.--.2024__
+__DEADLINE:  --.--.2025__
 
-### "Time to Detect LLM Generated Texts"
+### "Time to get familliar with Natural Language Processing and Triton Inference Server"
 
-You have to help Online Platform for english level test, where students write essays for time to pass the exam. After Large Language Model like ChatGPT released they found the problem, that students start generate essays by GPT.
-Now they ask you to create the algorithm to detect LLM generated essays.
+Many speech and language applications, including text-to-speech (TTS) and automatic speech recognition (ASR), require text normalization - converting written expressions into appropriate spoken forms (e.g., converting "12:47" to "twelve forty-seven" or "$3.16" to "three dollars, sixteen cents").
+One of the major challenges when developing TTS or ASR systems for a new language is creating and testing grammar rules for these conversions, which requires significant linguistic expertise and native speaker intuition.
+
+Here is the original competition:
+[kaggle competition](https://www.kaggle.com/competitions/text-normalization-challenge-russian-language/overview)
+
 
 
 ### Task
-Implement and deploy a production-ready text classifier.
+Implement and deploy a production-ready text normalization model for TTS.
 The current homework consists of two parts:
-*  The Deep Learning Engineer part.
-*  The MLOps features.
+*  Deep Learning Engineer part.
+*  Software Engineer part.
   
 Firstly, you need to train a competitive  system, and secondly: wrap your code into a production-ready artifact, which may be deployed on any Linux server in one command.
 
@@ -24,81 +28,188 @@ We don't accept homework if any of the following requirements are not satisfied:
 - You should build your project using [poetry](https://python-poetry.org/docs/) to freeze dependendecies of python packages you use. And attach your .whl file
 - Readable and Understandable `README.md` file:
     - Your fullname & group
-    - "**How To**" for your repo: train model, evaluate, deploy. With and without docker.
+    - "**How To**" for your repo: train model, evaluate, deploy. With docker.
     - Resources you utilized
 - Your code must be fully covered with logging to `./data/log_file.log`. The file should be viewable and downloadable
 - Proper `.gitignore` file. You do not want rubbish in your repo.
-- The major software artifact is `model.py`, containing the class `My_TextClassifier_Model` with following methods:
-    - `train`. Recieves the dataset filename. Performes model training. Saves the artifacts to `./model/`. Logs the results.
-    - `predict`. Recieves the text. Return predicted probability human/generated class, logs to file predicition results: `./data/results.csv`.
-- An integrated script for training and evaluation from CLI (check out `if __name__ == '__main__':`) so that:
-```console
-foo@bar:~$ python model.py predict --dataset=/path/to/evaluation/dataset
-```
+- The major software artifact is `model.py`, containing the class `My_TextNormalization_Model` with following methods:
+ - Normalize text(text: str) -> str
+
 - `Dockerfile`
 - `docker-compose.yaml`
-- Submission on kaggle competition with [ROC AUC](https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc) > 0.7.
-Read more about the metric [here](https://alexanderdyakonov.wordpress.com/2017/07/28/auc-roc-%D0%BF%D0%BB%D0%BE%D1%89%D0%B0%D0%B4%D1%8C-%D0%BF%D0%BE%D0%B4-%D0%BA%D1%80%D0%B8%D0%B2%D0%BE%D0%B9-%D0%BE%D1%88%D0%B8%D0%B1%D0%BE%D0%BA/)
+- Submission on kaggle competition with Token Accuracy (the total percent of correct tokens) > 0.96.
+Read more about the metric [here](https://www.kaggle.com/competitions/text-normalization-challenge-russian-language/overview/evaluation)
   
 ### Dataset
-Here the competition on Kaggle with Dataset: [kaggle competition](https://www.kaggle.com/competitions/llm-detect-ai-generated-text/)
+Here the competition on Kaggle with Dataset: [kaggle competition](https://www.kaggle.com/competitions/text-normalization-challenge-russian-language/)
 
-BUT we have a problem, we have only prompts which used in test set to generate Essays to check you generated text model quality and little train dataset. YOU expected collect (generate or find in open data sources) datasets with written and generated essays/texts by LLM and train your classifier.
+BUT we have a problem, the data quite dirty and have mistakes. Highly recommend for you find the way to clean data markup using LLM. Also recommend to collaborate with your colleagues and find the way to clean data and share it.
 
 
 ### Project Milestones
 ##### 1. Data Science in Jupyter
 Feel free to stick to Jupyter or Colab environment. Here we expect you to build two classifier models. 
- 1) Baseline classifier. You can start from just rules with heuristics you have to find together. Also recommend try TF-IDF with you favourite classic classifer method.
- 2) Neural Classifer. Model Backbone you can choose BERT, or try RNN, LSTM acrhitectures or give a chance  LLAMA/GPT/Mistral models
+ 1) Baseline rule classifier. No ML, just rules with heuristics.
+ 2) Neural Text Normalization Model. Check T5, BART, etc. Or experiment with LLAMA/GPT/Mistral models with 0-shot, few-shot without finetuning, or try finetune LoRa adapter.
 
 For both tasks, please, refer to target metrics at the end of README.
 Pay attention, here you will create submissions on Kaggle platform using created your own notebook with your model.
 
-Catch up the baseline.ipynb on rules with Kaggle submission format creation [colab](https://drive.google.com/file/d/1cNO3m8OQCueCOU4TQOP50pUlyc-JVjfq/view?usp=sharing)
+Catch up the baseline.ipynb on rules with Kaggle submission format creation [kaggler solution](https://www.kaggle.com/code/arccosmos/ru-baseline-lb-0-9799-from-en-thread)
 
 **Note!**: your model train process can stay in clean jupyter notebook file, you should pack to app **only** the model inference.
 
 ##### 2. Pack into git repo
-At this point we expect to see fully working CLI application in the `master` branch. 
-For example read more about [Fire](https://google.github.io/python-fire/guide/)
+At this point we expect to see fully working application in the `master` branch.  
   
 ##### 3. Pack to production ready solution
-###### 3.1 Poetry
-Create using poetry .whl file with your python packages dependencies. And command below works:
-```console
-foo@bar:~$ pip install your_file.whl 
-```
+###### 3.1 Triton Inference Server
+
+To ensure high-performance deployment of your text normalization model, you need to package it for use with NVIDIA Triton Inference Server. Follow these instructions:
+
+1. **Model Preparation**:
+   - Export your trained model to ONNX format or save it in a format supported by Triton (PyTorch, TensorFlow, ONNX)
+   - If you want to use LLM or achieve high performance using Encoder-Decoder models, I recommend converting your model to TensorRTLLM, follow the git repository [TensorRTLLM](https://github.com/NVIDIA/TensorRT-LLM) and the example [Llama3 with TensorRTLLM](https://www.infracloud.io/blogs/running-llama-3-with-triton-tensorrt-llm/)
+   - Make sure all pre- and post-processing of data is documented
+
+2. **Model Structure for Triton**:
+   - Create a `model_repository` directory with the following structure:
+     ```
+     model_repository/
+     └── text_normalization/
+         ├── config.pbtxt
+         └── 1/
+             └── model.onnx  # or other model format
+     ```
+   - The `config.pbtxt` file should contain the model configuration, including:
+     - Model name
+     - Platform (ONNX, PyTorch, TensorFlow)
+     - Input and output tensors with their shapes and data types
+     - Optimization parameters
+
+3. **Creating a Docker Image with Triton**:
+   - Add a `triton.Dockerfile` to your repository:
+     ```dockerfile
+     FROM nvcr.io/nvidia/tritonserver:22.12-py3
+     
+     WORKDIR /app
+     COPY model_repository /models
+     
+     # If additional dependencies are required
+     COPY requirements.txt .
+     RUN pip install -r requirements.txt
+     
+     # Run Triton server
+     CMD ["tritonserver", "--model-repository=/models"]
+     ```
+
+4. **Updating docker-compose.yaml**:
+   - Add the Triton service to your docker-compose.yaml:
+     ```yaml
+     services:
+       triton:
+         build:
+           context: .
+           dockerfile: triton.Dockerfile
+         ports:
+           - "8000:8000"  # HTTP API
+           - "8001:8001"  # gRPC API
+           - "8002:8002"  # Metrics
+         volumes:
+           - ./model_repository:/models
+         deploy:
+           resources:
+             reservations:
+               devices:
+                 - driver: nvidia
+                   count: 1
+                   capabilities: [gpu]
+     ```
+
+5. **Client Code**:
+   - Create a `triton_client.py` file to interact with the server:
+     ```python
+     import tritonclient.http as httpclient
+     from tritonclient.utils import np_to_triton_dtype
+     import numpy as np
+     
+     def normalize_text(text, url="localhost:8000"):
+         """
+         Normalizes text using a model deployed on Triton Inference Server.
+         
+         Args:
+             text (str): Input text for normalization
+             url (str): Triton server URL
+             
+         Returns:
+             str: Normalized text
+         """
+         client = httpclient.InferenceServerClient(url=url)
+         
+         # Text preprocessing (adapt to your model)
+         input_data = preprocess_text(text)
+         
+         # Prepare input data
+         inputs = []
+         inputs.append(httpclient.InferInput("input_ids", input_data.shape, np_to_triton_dtype(input_data.dtype)))
+         inputs[0].set_data_from_numpy(input_data)
+         
+         # Send request
+         results = client.infer("text_normalization", inputs)
+         
+         # Get and post-process results
+         output_data = results.as_numpy("output")
+         normalized_text = postprocess_output(output_data)
+         
+         return normalized_text
+     ```
+
+6. **Testing and Optimization**:
+   - Start the Triton server: `docker-compose up triton`
+   - Test performance using Triton Performance Analyzer [Triton Performance Analyzer](https://github.com/triton-inference-server/perf_analyzer/blob/main/README.md) + [nvidia docs about perf analyzer](https://docs.nvidia.com/deeplearning/triton-inference-server/archives/triton-inference-server-2280/user-guide/docs/user_guide/perf_analyzer.html)
+   - Your app 
+   - Optimize the model configuration to achieve the best performance:
+     - Configure dynamic batching parameters
+     - Experiment with parallelism parameters
+     - Consider using TensorRTLLM for additional optimization
+
+7. **Documentation**:
+   - Update README.md with instructions for deployment and using Triton
+   - Include examples of API requests and expected responses
+   - Document performance metrics (latency, throughput)
+
+Using Triton Inference Server will allow your model to process requests with high throughput and low latency, which is critical for industrial TTS systems.
+
 
 ##### 4. Grades
 ###### 4.1 Data Science part  
-| Points         | ROC AUC     | Description |
+| Points         | Token Accuracy     | Description |
 |--------------|-----------|------------|
 | 0       | < 0.5      |        |
-| 10      | [0.7; 0.75)| Good Baseline.       |
-| 20      | [0.75; 0.85] | Close to SOTA      |
-| 20      | > 0.85  |  SOTA?       |  
+| 10      | [0.9; 0.96)| Good Baseline.       |
+| 20      | [0.96; 0.97] | Close to SOTA      |
+| 10      | > 0.97  |  SOTA?       |  You can create your own test set and show, that your model works great, but test set on kaggle is bad. And get 10 points for this section.
 
 
-__Total: 50 points__  
+__Total: 40 points__  
 Please, note that cheating with metrics will lead you to the grade 0.
 
-###### 4.2 MLOps part  
+###### 4.2 Software Engineer part  
   
 | Points         | Bulletpoint     | Description |
 |--------------|-----------|------------|
-| 15 | [ONNX](https://github.com/onnx/onnx) neural classifier inference | You should use .onnx format for you model to speed up the inference of your model. You can use optimum to convert your model to onnnx format and run the inference. Hints: [1](https://www.philschmid.de/convert-transformers-to-onnx); [2](https://github.com/huggingface/optimum) |
-| 10     |Code quality   | Clear OOP pattern. Well in-code comments. Build-in documentation for each function. No code duplicates. Meaningful variable names       |
-| 5     | model.py      |    The model is properly packed into the class inside *.py file. CLI interface works well: predict.      |
+| 15  | Triton Inference Server | Model successfully wrapped in Triton Inference Server with proper configuration. Server starts and processes requests.  |
+| 10 | Perf Analyzer | Performance measurements conducted and documented using Triton Perf Analyzer. Latency and throughput metrics are presented. |
+| 10  | [ONNX](https://github.com/onnx/onnx) or TensorRTLLM model inference | You should use .onnx format for you model to speed up the inference of your model. You can use optimum to convert your model to onnnx format and run the inference. Hints: [1](https://www.philschmid.de/convert-transformers-to-onnx); [2](https://github.com/huggingface/optimum) |
+|  5   |Code quality   | Clear OOP pattern. Well in-code comments. Build-in documentation for each function. No code duplicates. Meaningful variable names       |
+|  5   | model.py      |    The model is properly packed into the class inside *.py file.      |
 | 5 | Wandb Your Model Training Artifacts  | You log all your model train process using [Wandb](https://wandb.ai/site) (or local [MLFLOW](https://mlflow.org/)) |
-| 5      | Logging       |Catch and log all possible errors. Singleton logging pattern (use logging module)      |
-| 3      | git workflow  | Publicly available repo. dev and master branches. Regular Commits. No Commit Rush. Meaningful comment for each commit.    |
-| 2      | Poetry usage   | .whl file created useing poetry. And pip install your_package.whl works.     |
-| 3      | docker        | working API in a docker container. Shared folder for all the artifacts (model files, logs, model predictions)      |
-| 2      |docker-compose | working docker-compose file       |
+|    2   | Logging       |Catch and log all possible errors. Singleton logging pattern (use logging module)      |
+|   3    | git workflow  | Publicly available repo. dev and master branches. Regular Commits. No Commit Rush. Meaningful comment for each commit.    |
+|    5   |docker-compose | working docker-compose file       |
 
 
-__Total: 50 points__ 
+__Total: 60 points__ 
 
 
 
