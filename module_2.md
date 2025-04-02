@@ -11,6 +11,7 @@ __DEADLINE:  --.--.2025__
 - https://lena-voita.github.io/nlp_course.html
 - https://ods.ai/tracks/nlp-course-spring-2025
 - https://ods.ai/tracks/df24-nlp
+- https://web.stanford.edu/~jurafsky/slp3/
 
 #### Triton inference server:
 - https://github.com/triton-inference-server/tutorials
