@@ -3,7 +3,22 @@ Natural Language Processing and Triton Inference Servers.
 
 __DEADLINE:  --.--.2025__
 
-### "Time to get familliar with Natural Language Processing and Triton Inference Server"
+
+## Time to get familliar with Natural Language Processing and Triton Inference Server
+
+#### Learn more about NLP:
+- https://github.com/yandexdataschool/nlp_course (ru lectures with seminars)
+- https://lena-voita.github.io/nlp_course.html
+- https://ods.ai/tracks/nlp-course-spring-2025
+- https://ods.ai/tracks/df24-nlp
+
+#### Triton inference server:
+- https://github.com/triton-inference-server/tutorials
+
+Get ready: NVIDIA's documentation can sometimes be incomplete or contain inaccuracies. It's recommended to:
+- Check the official GitHub issues for known problems and workarounds
+
+### Intro
 
 Many speech and language applications, including text-to-speech (TTS) and automatic speech recognition (ASR), require text normalization - converting written expressions into appropriate spoken forms (e.g., converting "12:47" to "twelve forty-seven" or "$3.16" to "three dollars, sixteen cents").
 One of the major challenges when developing TTS or ASR systems for a new language is creating and testing grammar rules for these conversions, which requires significant linguistic expertise and native speaker intuition.
@@ -32,8 +47,8 @@ We don't accept homework if any of the following requirements are not satisfied:
     - Resources you utilized
 - Your code must be fully covered with logging to `./data/log_file.log`. The file should be viewable and downloadable
 - Proper `.gitignore` file. You do not want rubbish in your repo.
-- The major software artifact is `model.py`, containing the class `My_TextNormalization_Model` with following methods:
- - Normalize text(text: str) -> str
+- The major software artifact is `model_impl.py`, containing the class `My_TextNormalization_Model` with following method: 
+  - ```def normalize text(text: str) -> str```
 
 - `Dockerfile`
 - `docker-compose.yaml`
@@ -43,7 +58,20 @@ Read more about the metric [here](https://www.kaggle.com/competitions/text-norma
 ### Dataset
 Here the competition on Kaggle with Dataset: [kaggle competition](https://www.kaggle.com/competitions/text-normalization-challenge-russian-language/)
 
-BUT we have a problem, the data quite dirty and have mistakes. Highly recommend for you find the way to clean data markup using LLM. Also recommend to collaborate with your colleagues and find the way to clean data and share it.
+BUT we have a problem, the data quite dirty and have mistakes. Highly recommend for you find the way to clean data markup.
+You have options here:
+* Use rules or heuristics to clean simple cases
+* Do all clean up using LLM. I suggest you use free API LLM or any Local Model (run them using [vllm](https://github.com/vllm-project/vllm)). 
+
+Free API:
+  * [Gemini, Gemma](https://ai.google.dev/gemini-api/docs/rate-limits)
+  * https://console.mistral.ai/api-keys 
+  * any other you will find
+
+  Also check Structured Output feature (All modern LLM APIs support it):
+  - [vllm](https://docs.vllm.ai/en/latest/features/structured_outputs.html)
+
+Also recommend to collaborate with your colleagues and find the way to clean data and share it.
 
 
 ### Project Milestones
