@@ -87,6 +87,11 @@ Catch up the baseline.ipynb on rules with Kaggle submission format creation [kag
 
 **Note!**: your model train process can stay in clean jupyter notebook file, you should pack to app **only** the model inference.
 
+At Dark time use this hints:
+1. Remember you can use any utils you will find at the internet. Any model from [huggingface] (https://huggingface.co/models)
+2. [check linguists view for this task](https://dialogue-conf.org/media/3906/cherepanovaod.pdf)
+3. https://github.com/NVIDIA/NeMo-text-processing 
+
 ##### 2. Pack into git repo
 At this point we expect to see fully working application in the `master` branch.  
   
@@ -215,8 +220,8 @@ Using Triton Inference Server will allow your model to process requests with hig
 |--------------|-----------|------------|
 | 0       | < 0.5      |        |
 | 10      | [0.9; 0.96)| Good Baseline.       |
-| 20      | [0.96; 0.97] | Close to SOTA      |
-| 10      | > 0.97  |  SOTA?       |  You can create your own test set and show, that your model works great, but test set on kaggle is bad. And get 10 points for this section.
+| 15      | [0.96; 0.97] | Close to SOTA      |
+| 15      | > 0.97  |  SOTA?       |  You can create your own test set and show, that your model works great, but test set on kaggle is bad. And get 10 points for this section.
 
 
 __Total: 40 points__  
