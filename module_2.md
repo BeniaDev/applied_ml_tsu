@@ -203,7 +203,7 @@ Please, note that cheating with metrics will lead you to the grade 0.
 | 10  | [ONNX](https://github.com/onnx/onnx) or TensorRTLLM model inference | You should use .onnx format for you model to speed up the inference of your model. You can use optimum to convert your model to onnnx format and run the inference. Hints: [1](https://www.philschmid.de/convert-transformers-to-onnx); [2](https://github.com/huggingface/optimum) |
 |  5   |Code quality   | Clear OOP pattern. Well in-code comments. Build-in documentation for each function. No code duplicates. Meaningful variable names       |
 |  5   | model.py      |    The model is properly packed into the class inside *.py file.      |
-| 5 | Wandb Your Model Training Artifacts  | You log all your model train process using [Wandb](https://wandb.ai/site) (or local [MLFLOW](https://mlflow.org/)) |
+| 5 | Wandb Your Model Training Artifacts  | You log all your model train process using [Wandb](https://wandb.ai/site) or ClearML |
 |    2   | Logging       |Catch and log all possible errors. Singleton logging pattern (use logging module)      |
 |   3    | git workflow  | Publicly available repo. dev and master branches. Regular Commits. No Commit Rush. Meaningful comment for each commit.    |
 |    5   |docker-compose | working docker-compose file       |
