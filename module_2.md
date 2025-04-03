@@ -12,6 +12,7 @@ __DEADLINE:  --.--.2025__
 - https://ods.ai/tracks/nlp-course-spring-2025
 - https://ods.ai/tracks/df24-nlp
 - https://web.stanford.edu/~jurafsky/slp3/
+- https://www.philschmid.de/fine-tune-llms-in-2024-with-trl#1-define-our-use-case
 
 #### Triton inference server:
 - https://github.com/triton-inference-server/tutorials
