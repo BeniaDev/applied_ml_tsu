@@ -72,3 +72,45 @@ We do not accept homework assignments unless at least one of the following condi
 *   Software artifact: The main file is `model_impl.py`  containing the `My_LicensePlate_Model` class with the following method: `def detect_plates(self, frame: np.ndarray) -> list[dict]` (The method takes a frame and returns a list of dictionaries with frame coordinates and probability).
                      
 *   Deployment: Availability of `Dockerfile` and `docker-compose.yaml` for launching the application in the "Video" or "Camera" modes.
+
+## Dataset
+ 
+As a dataset, you can take any video recorded on the road (which contains license plates) and mark it up on a convenient platform (for example: [roboflow](https://roboflow.com/)  or [Label Studio](https://labelstud.io/) ).
+ 
+If you have any problems with the markup, you can take the [ready-made data](https://app.roboflow.com/etbx/license_plates-fepuu/1)  (which I have prepared especially for you).
+ 
+
+## Project Milestones
+ 
+
+1.  IDE
+     
+    You can freely use any development environment, but if your computer is not powerful enough, then it is recommended to use google collaborate.
+     
+2.  Drivers
+     
+    Model training is recommended on NVIDIA graphics cards. To do this, it is recommended to install the latest driver version, CUDA, and the corresponding library version for PyTorch.:
+     
+    `pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu128`
+     
+3.  Pack into git repo
+     
+    At this point we expect to see fully working application in the `main` branch.
+     
+
+## **Grades**
+ 
+**Data Science part**
+ 
+
+| **Points** | **Token Accuracy** | **Description** |
+| ---------- | ------------------ | --------------- |
+| 0 | &lt; 0.5 |  |
+| 10 | \[0.9; 0.93) | Good Baseline. |
+| 15 | \[0.93; 0.97\] | Close to SOTA |
+| 15 | \&gt; 0.97 | SOTA? |
+
+**Total: 40 points**<br>Please, note that cheating with metrics will lead you to the grade 0.
+ 
+**Software Engineer part**
+ <table><tbody><tr><th >**Points**</th><th >**Bulletpoint**</th><th >**Description**</th></tr><tr><td >10</td><td >Your dataset</td><td >You didn't use a ready-made dataset, but created and used your own</td></tr><tr><td >20</td><td >Use cases</td><td >Your model is capable of working with both video files and stream analysis (for example, webcams)</td></tr><tr><td >5</td><td >README demos</td><td >In your README file, gif files have been added showing how your model works</td></tr><tr><td >5</td><td >Code quality</td><td >Clear OOP pattern. Well in-code comments. Build-in documentation for each function. No code duplicates. Meaningful variable names</td></tr><tr><td >5</td><td >model.py</td><td >The model is properly packed into the class inside \*.py file.</td></tr><tr><td >5</td><td >Wandb Your Model Training Artifacts</td><td >You log all your model train process using [Wandb](https://wandb.ai/site)  or ClearML</td></tr><tr><td >2</td><td >Logging</td><td >Catch and log all possible errors. Singleton logging pattern (use logging module)</td></tr><tr><td >3</td><td >git workflow</td><td >Publicly available repo. dev and master branches. Regular Commits. No Commit Rush. Meaningful comment for each commit.</td></tr></tbody></table>
