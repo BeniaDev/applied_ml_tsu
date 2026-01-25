@@ -37,6 +37,7 @@ Implement and implement a ready-to-use license plate detection system based on t
     Data collection and markup: Independently select video materials with road traffic. Perform the bounding boxes for license plates using tools like CVAT or labelImg.
          
     Training: Refine (fine-tune) the YOLO model on the assembled dataset. You need to achieve a high mAP metric while maintaining a low output latency.
+    P.s. 
          
     Analysis: Evaluate the quality of the model in different scenarios (day/night, different distance).
          
@@ -48,7 +49,20 @@ Implement and implement a ready-to-use license plate detection system based on t
              
     2.  Live Stream: Processing the webcam stream in real time.
              
-            
+## mAP and Latency
+
+Quite simply, a mAP is an indicator of how accurately a neural network finds objects and whether it correctly defines their boundaries.
+
+To understand the mAP, you need to know two components:
+
+*   Precision: Of all the objects that the model framed, how many actually turned out to be the right objects? (We minimize false positives).
+
+*   Recall (Completeness): Of all the real objects in the picture, how many could the model find? (We minimize the gaps).
+
+mAP is the average accuracy value for all classes of objects at different levels of "rigor" (IoU). The higher this indicator (from 0 to 1 or from 0% to 100%), the better the detector works.
+
+Latency is the time it takes for the model to process a single image (from the moment the image is submitted to the input to receiving the coordinates of the frames at the output).
+
 ## Technical requirements
              
 We do not accept homework assignments unless at least one of the following conditions is met:
@@ -103,12 +117,12 @@ If you have any problems with the markup, you can take the [ready-made data](htt
 **Data Science part**
  
 
-| **Points** | **Token Accuracy** | **Description** |
+| **Points** | **mAP value** | **Description** |
 | ---------- | ------------------ | --------------- |
-| 0 | &lt; 0.5 |  |
-| 10 | \[0.9; 0.93) | Good Baseline. |
-| 15 | \[0.93; 0.97\] | Close to SOTA |
-| 15 | \> 0.97 | SOTA? |
+| 0 | \< 0.4 | Poor |
+| 10 | \[0.4; 0.6) | Baseline |
+| 15 | \[0.6; 0.8\] | Good |
+| 15 | \> 0.8 | S-Tier |
 
 **Total: 40 points**<br>Please, note that cheating with metrics will lead you to the grade 0.
  
