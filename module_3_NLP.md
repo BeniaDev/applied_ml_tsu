@@ -107,7 +107,7 @@ You must try **at least 3 of the 4 techniques below** and report each as a row i
 
 | Technique | chrF++ on dev | Kaggle public LB | Notes |
 
-### 1. Orthography normalization (mandatory)
+### 1. Orthography normalization (optional)
 
 Akkadian transliteration is wildly inconsistent across publications. Build a normalizer and document the rules you chose. Typical decisions:
 
@@ -119,7 +119,7 @@ Akkadian transliteration is wildly inconsistent across publications. Build a nor
 
 Ablation: metric with normalization vs without. This is the cheapest big win.
 
-### 2. Beam search decoding (mandatory)
+### 2. Beam search decoding (optional)
 
 Move past greedy — use beam search with beam size 4–8 and report the dev metric delta.
 
@@ -128,7 +128,7 @@ Move past greedy — use beam search with beam size 4–8 and report the dev met
 
 Ablation: greedy vs beam.
 
-### 3. Mini-ensemble (mandatory)
+### 3. Mini-ensemble (optional)
 
 Train **at least 2 checkpoints** differing by one of: random seed, training data mix, or model size (e.g. ByT5-base + ByT5-large). Combine their outputs (average logits, or take the best dev-chrF++ candidate per sentence).
 
