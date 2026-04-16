@@ -6,6 +6,15 @@ Welcome page: https://www.deeppast.org/
 
 **DEADLINE: --.--.2026**
 
+#### Learn more about NLP:
+- https://github.com/yandexdataschool/nlp_course (ru lectures with seminars)
+- https://lena-voita.github.io/nlp_course.html
+- https://ods.ai/tracks/nlp-course-spring-2025
+- https://ods.ai/tracks/df24-nlp
+- https://web.stanford.edu/~jurafsky/slp3/
+- https://www.philschmid.de/fine-tune-llms-in-2024-with-trl#1-define-our-use-case (https://github.com/philschmid/deep-learning-pytorch-huggingface/blob/main/training/fine-tune-llms-in-2024-with-trl.ipynb)
+- https://github.com/philschmid/deep-learning-pytorch-huggingface/blob/main/training/fine-tune-llms-in-2025.ipynb
+
 ---
 
 ## Background
@@ -94,7 +103,7 @@ You must document in the `README.md` exactly how you obtained, licensed, cleaned
 
 This section reflects what actually worked for the **top-4 Kaggle solutions** of this exact competition. Instead of blindly applying classical back-translation (which none of the winners used as their hero technique), you must run a **data- and decoding-centric** set of experiments and report a structured ablation.
 
-You must try **at least 4 of the 6 techniques below** and report each as a row in a `Results` table in the README:
+You must try **at least 3 of the 4 techniques below** and report each as a row in a `Results` table in the README:
 
 | Technique | chrF++ on dev | Kaggle public LB | Notes |
 
@@ -110,31 +119,22 @@ Akkadian transliteration is wildly inconsistent across publications. Build a nor
 
 Ablation: metric with normalization vs without. This is the cheapest big win.
 
-### 2. Multi-candidate decoding + selector (mandatory)
+### 2. Beam search decoding (mandatory)
 
-All of 1st, 3rd, and 4th place used this. Generate `N` candidates per source sentence and pick one:
+Move past greedy — use beam search with beam size 4–8 and report the dev metric delta.
 
-- Beam search (beam 4–8) + sampling at temperatures `T ∈ {0.3, 0.7, 1.0}` → 5–10 candidates.
-- Selector: **MBR (Minimum Bayes Risk)** with chrF or BLEU utility (community implementations are available; cite the one you use), **or** a simple reranker (e.g. round-trip perplexity, length heuristic).
+- Sweep beam size `∈ {1, 4, 8}` and pick the one that wins on dev chrF++.
+- Optionally tune `length_penalty` and `no_repeat_ngram_size`.
 
-Ablation: greedy vs beam vs MBR.
+Ablation: greedy vs beam.
 
 ### 3. Mini-ensemble (mandatory)
 
-Train **at least 2 checkpoints** differing by one of: random seed, training data mix, or model size (e.g. ByT5-base + ByT5-large). Combine their candidates and run them through your selector from (2).
+Train **at least 2 checkpoints** differing by one of: random seed, training data mix, or model size (e.g. ByT5-base + ByT5-large). Combine their outputs (average logits, or take the best dev-chrF++ candidate per sentence).
 
 Ablation: single model vs ensemble.
 
-### 4. Synthetic pre-training data — CPT → FT (recommended, replaces classical back-translation)
-
-This is what the **3rd place** solution did and it generalizes the idea of pseudo-labeling in a more useful direction for low-resource MT:
-
-1. **CPT stage** — Continued seq2seq Pre-Training on **synthetically generated** Old Akkadian / Old Assyrian material that teaches the model language fundamentals: morphological paradigms (noun declensions, verb conjugations), vocabulary drills from a dictionary, simple template sentences. Generation tools: any LLM (Claude / GPT / local Qwen / Llama) prompted with grammar tables from Huehnergard's *Grammar of Akkadian* or CDA (Concise Dictionary of Akkadian).
-2. **FT stage** — Fine-Tune on the clean real parallel pairs only (Kaggle `train.csv`).
-
-Ablation: FT-only vs CPT → FT.
-
-### 5. Classical back-translation (optional)
+### 4. Classical back-translation (optional)
 
 Left in as an option, not the headline technique:
 
@@ -143,7 +143,7 @@ Left in as an option, not the headline technique:
 
 Report size of synthetic corpus, filtering strategy, and the dev metric delta.
 
-### 6. External parallel / monolingual data (optional, must verify license and test-set disjointness)
+### 5. External parallel / monolingual data (optional, must verify license and test-set disjointness)
 
 You may use **any openly available** parallel or monolingual Akkadian corpus, as long as:
 
@@ -259,7 +259,7 @@ foo@bar:~$ python model.py predict-file --dataset=/path/to/test.csv
 
 1. **Data** — download the Kaggle corpus, study it, de-duplicate, prepare a dev split disjoint from the Kaggle test set.
 2. **Baseline** — fine-tune **ByT5-small/base** (or justified alternative) on Kaggle `train.csv` only, no normalization, greedy decoding. Submit to Kaggle. Record chrF++ on dev.
-3. **Mandatory experiments** — run at least 4 of the 6 techniques from the "Mandatory Experiments" section (orthography normalization, multi-candidate decoding + selector, mini-ensemble, synthetic CPT data, optional classical back-translation, optional external open-license data). Fill in the ablation `Results` table after each experiment.
+3. **Mandatory experiments** — run at least 3 of the 4 techniques from the "Mandatory Experiments" section (orthography normalization, beam search decoding, mini-ensemble, optional classical back-translation, optional external open-license data). Fill in the ablation `Results` table after each experiment.
 4. **Packaging** — `model.py` + CLI + Poetry/UV, ClearML / W&B artifacts.
 5. **Serving** — Path A (ByT5 + TGI) or Path B (LoRA-LLM + vLLM/SGLang) + streaming web UI + Docker Compose.
 6. **Demo** — GIFs in README, measured TTFT and tokens/sec, Kaggle leaderboard screenshot.
@@ -272,26 +272,24 @@ foo@bar:~$ python model.py predict-file --dataset=/path/to/test.csv
 
 The DS grade rewards a **structured ablation report** over a raw leaderboard position. Cheating the metric is easy — honest ablations are not.
 
-**Kaggle leaderboard (indicative tiers, calibrated at grading time):**
+**Kaggle leaderboard (score-based tiers, metric = Geometric Mean of BLEU and chrF++):**
 
-| Points | Leaderboard tier                              | Description                                          |
-|--------|-----------------------------------------------|------------------------------------------------------|
-| 0      | Below the `sample_submission` baseline        | Submission broken or no real model                   |
-| 5      | Beats the trivial baseline                    | Reasonable fine-tune of any recommended model        |
-| 10     | Top-50% of the public leaderboard             | Baseline + working ablations                         |
-| 10     | Top-10% of the public leaderboard             | Close to public SOTA                                 |
+| Points | Score threshold     | Description                                                              |
+|--------|---------------------|--------------------------------------------------------------------------|
+| 0      | Score < 35.9        | No submission, broken submission, or below the minimum graded threshold  |
+| 20     | Score ≥ 35.9        | Working fine-tune of a recommended model                                 |
+| 30     | Score ≥ 39.0        | Strong solution, close to public SOTA                                    |
 
 **Ablation report & experiments:**
 
 | Points | Bulletpoint                                | Description                                                                                                                                    |
 |--------|--------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|
-| 5      | Orthography normalization (mandatory)      | Documented rules, ablated with and without.                                                                                                     |
-| 5      | Multi-candidate decoding + selector        | ≥ 5 candidates per sentence, MBR or reranker, ablation vs greedy/beam.                                                                          |
-| 5      | Mini-ensemble                              | ≥ 2 checkpoints combined via the selector from above, ablation vs single model.                                                                 |
-| 5      | Synthetic CPT → FT                         | Generated OA pre-training data (morphology / vocab / templates), two-stage training, ablation vs FT-only.                                       |
+| 10     | Orthography normalization (mandatory)      | Documented rules, ablated with and without.                                                                                                     |
+| 10     | Beam search decoding (mandatory)           | Beam size sweep, ablation vs greedy, report best config on dev chrF++.                                                                          |
+| 10     | Mini-ensemble (mandatory)                  | ≥ 2 checkpoints combined (logit averaging or per-sentence best-dev pick), ablation vs single model.                                             |
 | 5      | Full metric suite                          | Kaggle score + BLEU + chrF++ + COMET, reported on dev and test.                                                                                 |
 
-**Total: 45 points**
+**Total: 65 points**
 
 > Cheating with metrics (training on dev/test, leaderboard probing beyond the allowed daily quota, leakage from external corpora into the test set) leads to grade **0**.
 
@@ -299,16 +297,16 @@ The DS grade rewards a **structured ablation report** over a raw leaderboard pos
 
 | Points | Bulletpoint            | Description                                                                                                       |
 |--------|------------------------|-------------------------------------------------------------------------------------------------------------------|
-| 15     | Streaming inference    | Working vLLM / SGLang / TGI backend. Tokens streamed via SSE/WebSocket to the UI. TTFT reported.                  |
-| 10     | Web UI                 | Yandex/Google-Translate-like two-pane UI, debounced input, visible realtime streaming.                            |
-| 10     | Docker Compose         | `docker compose up` brings up the full stack (inference + gateway + UI).                                          |
-| 5      | `model.py`             | Class `My_Translator_Model` with `train`, `predict(stream=True)`, `predict_file`. CLI works. Multi-candidate decoding + selector supported. |
-| 5      | Poetry / UV            | `.whl` installable, or `poetry.lock` / `uv.lock` committed and reproducible.                                      |
-| 5      | ClearML / W&B          | Training runs, hyperparameters, dataset and best-model artifacts logged.                                          |
-| 3      | Logging                | Singleton logger, errors caught and logged, log file accessible inside the container.                             |
+| 10     | Streaming inference    | Working vLLM / SGLang / TGI backend. Tokens streamed via SSE/WebSocket to the UI. TTFT reported.                  |
+| 5      | Web UI                 | Yandex/Google-Translate-like two-pane UI, debounced input, visible realtime streaming.                            |
+| 7      | Docker Compose         | `docker compose up` brings up the full stack (inference + gateway + UI).                                          |
+| 3      | `model.py`             | Class `My_Translator_Model` with `train`, `predict(stream=True)`, `predict_file`. CLI works.                      |
+| 3      | Poetry / UV            | `.whl` installable, or `poetry.lock` / `uv.lock` committed and reproducible.                                      |
+| 3      | ClearML / W&B          | Training runs, hyperparameters, dataset and best-model artifacts logged.                                          |
+| 2      | Logging                | Singleton logger, errors caught and logged, log file accessible inside the container.                             |
 | 2      | Git workflow           | Public repo, `develop` + `main`, meaningful commits, no commit rush.                                              |
 
-**Total: 55 points**
+**Total: 35 points**
 
 ---
 
@@ -319,8 +317,10 @@ Up to **20 bonus points** for any of:
 - **External open-license dataset mining** — use any additional openly available parallel or monolingual Akkadian corpus (ORACC, CDLI, ETCSL/ETCSRI, Gutherz et al., other Kaggle datasets, HuggingFace hub). Mandatory: document the **license** for every added source in the README and verify no overlap with the Kaggle test set. Bonus scales with the quality of the documentation and the metric delta.
 - **OCR / LLM extraction from academic PDFs** (what 2nd and 4th place did) — build additional training pairs by extracting translation/transliteration pairs from public-domain or properly-licensed academic publications using Tesseract + PyMuPDF, or an LLM (Gemini / Claude / GPT) on rendered pages. Fully optional; license check mandatory.
 - **Classical back-translation** — implement the full Sennrich-style back-translation pipeline (reverse model, synthetic pairs, filtering) and include it as an extra row in the ablation table.
+- **Multi-candidate decoding + MBR selector** — generate ≥ 5 candidates per sentence (beam + sampling at `T ∈ {0.3, 0.7, 1.0}`) and pick one via **MBR (Minimum Bayes Risk)** with chrF or BLEU utility. Ablation: beam vs MBR. (What 1st, 3rd, and 4th place did.)
+- **Synthetic CPT → FT** — two-stage training: Continued seq2seq Pre-Training on synthetically generated Old Akkadian material (morphological paradigms, vocabulary drills, template sentences generated with an LLM from Huehnergard's *Grammar of Akkadian* / CDA), then Fine-Tune on Kaggle `train.csv`. Ablation: FT-only vs CPT → FT. (What 3rd place did.)
 - **LLM-assisted sentence-level alignment** — split document-level pairs into sentence-level pairs via an LLM pipeline (like 2nd place did).
-- **Learned reranker** — replace MBR with a small fine-tuned pairwise reward model (like 3rd place's Qwen3-8B reranker).
+- **Learned reranker** — a small fine-tuned pairwise reward model over multi-candidate outputs (like 3rd place's Qwen3-8B reranker).
 - **Quantization** of the served model (AWQ / GPTQ / bitsandbytes / FP8) with measured TTFT / throughput improvement and score delta.
 - **Cuneiform input** — accept raw cuneiform Unicode (𒀭𒂗𒆤) and auto-transliterate before translation.
 - **Paper review** in the style of [DS Talks Siberia](https://t.me/+fQ07VSVJ2V8yZGYy) on Gutherz et al. 2023, the ByT5 paper, MBR decoding, or another low-resource MT paper.
