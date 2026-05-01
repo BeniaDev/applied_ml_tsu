@@ -74,7 +74,7 @@ You are explicitly free to use:
 
 You are explicitly **not allowed** to:
 - Use a single ever-growing context window with no retrieval/compression strategy. ("Just stuff everything in the prompt" fails the homework — it's neither a defensible architecture nor will it survive the cost model.)
-- Hardcode the demo facts. The investor demo Dmitry described must work for *any* user, not just for `dmitry@mindly.io`.
+- Hardcode the demo facts.
 
 ---
 
