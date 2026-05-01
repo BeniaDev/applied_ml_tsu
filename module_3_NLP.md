@@ -313,12 +313,5 @@ The DS grade rewards a **structured ablation report** over a raw leaderboard pos
 ## Bonus Part
 
 Up to **20 bonus points** for any of:
-
-- **External open-license dataset mining** — use any additional openly available parallel or monolingual Akkadian corpus (ORACC, CDLI, ETCSL/ETCSRI, Gutherz et al., other Kaggle datasets, HuggingFace hub). Mandatory: document the **license** for every added source in the README and verify no overlap with the Kaggle test set. Bonus scales with the quality of the documentation and the metric delta.
-- **OCR / LLM extraction from academic PDFs** (what 2nd and 4th place did) — build additional training pairs by extracting translation/transliteration pairs from public-domain or properly-licensed academic publications using Tesseract + PyMuPDF, or an LLM (Gemini / Claude / GPT) on rendered pages. Fully optional; license check mandatory.
-- **Multi-candidate decoding + MBR selector** — generate ≥ 5 candidates per sentence (beam + sampling at `T ∈ {0.3, 0.7, 1.0}`) and pick one via **MBR (Minimum Bayes Risk)** with chrF or BLEU utility. Ablation: beam vs MBR. (What 1st, 3rd, and 4th place did.)
-- **Synthetic CPT → FT** — two-stage training: Continued seq2seq Pre-Training on synthetically generated Old Akkadian material (morphological paradigms, vocabulary drills, template sentences generated with an LLM from Huehnergard's *Grammar of Akkadian* / CDA), then Fine-Tune on Kaggle `train.csv`. Ablation: FT-only vs CPT → FT. (What 3rd place did.)
-- **LLM-assisted sentence-level alignment** — split document-level pairs into sentence-level pairs via an LLM pipeline (like 2nd place did).
-- **Learned reranker** — a small fine-tuned pairwise reward model over multi-candidate outputs (like 3rd place's Qwen3-8B reranker).
 - **Quantization** of the served model (AWQ / GPTQ / bitsandbytes / FP8) with measured TTFT / throughput improvement and score delta.
 - **Paper review** in the style of [DS Talks Siberia](https://t.me/+fQ07VSVJ2V8yZGYy) on Gutherz et al. 2023, the ByT5 paper, MBR decoding, or another low-resource MT paper.
