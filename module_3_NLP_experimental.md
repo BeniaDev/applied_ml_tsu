@@ -173,7 +173,7 @@ Grading is keyed to the [template's sections](https://github.com/IrinaGoloshchap
 | 4.2 Инфраструктура и масштабируемость            | 2    | 1       | 0     | Sizing for demo *and* for 10k MAU year-end target; bottlenecks identified.                                                       |
 | 4.3 Требования к работе системы                  | 2    | 1       | 0     | Quantified non-functional requirements (latency p50/p95, TTFT, throughput, availability) — numbers, not adjectives.              |
 | 4.4 Безопасность системы                         | 2    | 1       | 0     | Auth, rate limiting, **prompt-injection threat model** for an agent with persistent memory, abuse handling.                      |
-| 4.5 Безопасность данных                          | 3    | 1       | 0     | Per-tenant isolation, right-to-be-forgotten, encryption, retention, **152-FZ / GDPR gaps**.                                      |
+| 4.5 Безопасность данных                          | 3    | 1       | 0     | Per-tenant isolation, right-to-be-forgotten, encryption, retention,                                       |
 | 4.6 Издержки                                     | 2    | 1       | 0     | Dollars/1k MAU at demo and year-end scale with shown math; hosted-API vs self-hosted comparison.                                 |
 | 4.7 Integration points                           | 1    | 0       | 0     | Concrete API surface Mindly's existing app must expose / consume (auth, IDs, ingestion, deletion webhook).                       |
 | 4.8 Риски                                        | 2    | 1       | 0     | Top 5 ranked, each with a mitigation; ≥ 1 covers tenant leakage.                                                                 |
