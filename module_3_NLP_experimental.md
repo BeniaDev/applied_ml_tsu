@@ -162,10 +162,10 @@ Grading is keyed to the [template's sections](https://github.com/IrinaGoloshchap
 | 1.1 Зачем идем в разработку продукта?            | 2    | 1       | 0     | Mindly's unit economics + why an AI coach with memory is the lever, framed in the customer's terms.                              |
 | 1.2 Бизнес-требования и ограничения              | 3    | 1       | 0     | Numbered list extracted from the transcript, each tagged stated / inferred / assumed, assumptions written out.                   |
 | 1.3 Скоуп проекта / итерации                     | 2    | 1       | 0     | Demo scope vs phase 2 explicitly delineated; the "investor demo moment" identified.                                              |
-| 1.4 Предпосылки решения                          | 2    | 1       | 0     | Available data, models, vendor / API constraints, $3k/month budget all named.                                                    |
+| 1.4 Предпосылки решения                          | 2    | 1       | 0     | Available data, models, vendor.                                                   |
 | 2.1 Постановка задачи                            | 2    | 1       | 0     | Inputs / outputs formalised; "memory" and "proactive recall" given operational definitions.                                      |
-| 2.2 Блок-схема решения                           | 3    | 1       | 0     | Diagram with memory layer central; **≥ 3 alternative architectures** with a trade-off table; defended choice.                    |
-| 2.3 Этапы решения задачи                         | 2    | 1       | 0     | Week-by-week plan with concrete artifacts at each step.                                                                          |
+| 2.2 Блок-схема решения                           | 3    | 1       | 0     | Diagram with memory layer central; **≥ 2 alternative architectures** with a trade-off table; defended choice.                    |
+| 2.3 Этапы решения задачи                         | 2    | 1       | 0     | Month plan with concrete artifacts at each step.                                                                          |
 | 3.1 Способ оценки пилота                         | 3    | 1       | 0     | Benchmark named (LongMemEval / LoCoMo / justified alternative), metric, baseline to compare against, honest scope of the number. |
 | 3.2 Что считаем успешным пилотом                 | 2    | 1       | 0     | Two layers: a product success criterion the customer would sign off on + an engineering number from 3.1.                         |
 | 3.3 Подготовка пилота                            | 2    | 1       | 0     | Eval dataset, test users, pre-demo checklist, on-stage script for May 30.                                                        |
