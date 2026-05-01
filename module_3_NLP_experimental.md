@@ -125,7 +125,7 @@ The same engineering hygiene as Homework 3 (regular track). We do not accept sub
     - List of any datasets / models used with their licenses.
     - GIF or short video of two cross-session conversations demonstrating recall.
 - **Logging**: full pipeline (memory writes, retrievals, deletions, model calls, errors) logged to `./data/log_file.log`.
-- **Secrets**: API keys via `.env` only. `.env` in `.gitignore`. We will check.
+- **Secrets**: API keys via `.env` only. `.env` in `.gitignore`.
 - **Main software artifact**: a class (you choose the name, e.g. `MindlyAgent`) with at minimum:
     - `chat(user_id: str, persona: str, message: str, stream: bool = True) -> Iterator[str] | str`
     - `forget(user_id: str, query: str | Literal["all"]) -> None`
