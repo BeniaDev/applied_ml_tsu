@@ -52,29 +52,6 @@ Recommend you use this template — copy the file into your repo and fill it out
 
 **Format:** Markdown in `/docs/ml_system_design_doc.md` of the repo. PDF export is optional. 
 
-#### Task-specific guidance for each template section
-
-For *this* task (Mindly's conversation agent with memory), each template section must address the points below — these are what we look for when grading completeness. The template's own prompts come first; this list extends them with the specifics of the customer brief.
-
-- **1.1 Зачем идем в разработку продукта?** — Mindly's unit-economics problem and why an AI coach with memory is the chosen lever. Use Dmitry's own framing.
-- **1.2 Бизнес-требования и ограничения** — extracted from the transcript. Numbered list, each tagged **stated / inferred / assumed**. Assumptions written out explicitly.
-- **1.3 Скоуп проекта / итерации** — what is in the May 30 investor demo vs phase 2 (tools, scheduling, full mobile, fine-tuning, scale to 10k MAU).
-- **1.4 Предпосылки решения** — data you have (≈5k anonymised sessions, 200 clients, RU/EN mix), models you can rely on, vendor / API constraints, the $3k/month inference budget.
-- **2.1 Постановка задачи** — formalise: inputs, outputs, what "memory" means here, what "proactive recall" means.
-- **2.2 Блок-схема решения** — component diagram with the **memory layer as the centerpiece**: write path, read path, storage, retrieval, summarisation/consolidation (if any), proactive-recall trigger. Show **at least three alternatives** you considered (naive long-context, RAG over raw transcripts, fact-extraction + KV store, MemGPT-style hierarchical, mem0, A-MEM, etc.) with a short trade-off table. Pick one. Defend the pick.
-- **2.3 Этапы решения задачи** — week-by-week plan from today to demo day, with concrete artifacts at each step.
-- **3.1 Способ оценки пилота** — which memory benchmark you'll run (LongMemEval, LoCoMo, or a documented alternative), why, the metric, what you'll compare against. Be honest about what the number does and does not say.
-- **3.2 Что считаем успешным пилотом** — two layers: (a) a **product** success criterion Dmitry would sign off on; (b) an **engineering** number from the benchmark above.
-- **3.3 Подготовка пилота** — eval dataset, test users, pre-demo checklist, what you'll show on stage on May 30.
-- **4.1 Архитектура решения** — concrete components: LLM, embedding model, vector store, transactional store for facts, agent loop, persona layer, streaming gateway. Justify each choice.
-- **4.2 Инфраструктура и масштабируемость** — sizing for the demo (1–10 concurrent users) and for the year-end target (10k MAU). What scales horizontally, what's a bottleneck.
-- **4.3 Требования к работе системы** — quantified non-functional requirements. "Fast" is not a number; "p95 TTFT < 800 ms at 50 RPS" is.
-- **4.4 Безопасность системы** — auth, rate limiting, prompt-injection surface (a chat agent with persistent memory is a juicy target — what's your threat model?), abuse handling.
-- **4.5 Безопасность данных** — **multi-tenant isolation** (per-client memory partitioning), **right-to-be-forgotten** implementation, encryption at rest and in transit, retention policy, **152-FZ / GDPR gap analysis** (concrete gaps, not handwaving).
-- **4.6 Издержки** — cost model. Dollars per 1k MAU per month at demo scale and at year-end-target scale. Show your math (tokens × price × sessions × users). Compare hosted-API vs self-hosted-open-weights paths.
-- **4.7 Integration points** — what Mindly's existing app would need to expose for your service to plug in (auth, user IDs, transcript ingestion, deletion webhook).
-- **4.8 Риски** — top 5 things that could go wrong, ranked, each with a concrete mitigation. At least one of these must address memory leakage between tenants.
-
 ### Part 2 — MVP Conversation Agent with Memory
 
 A working system that does **the demo Client described**. Concretely:
