@@ -277,8 +277,8 @@ The DS grade rewards a **structured ablation report** over a raw leaderboard pos
 | Points | Score threshold     | Description                                                              |
 |--------|---------------------|--------------------------------------------------------------------------|
 | 0      | Score < 35.9        | No submission, broken submission, or below the minimum graded threshold  |
-| 10     | Score ≥ 35.9        | Working fine-tune of a recommended model                                 |
-| 20     | Score ≥ 39.0        | Strong solution, close to public SOTA                                    |
+| 15     | chrF++ > 10.0 & chrF++ <= 35.9       | Working fine-tune of a recommended model (UPD 20.06.2026)                                |
+| 15     | chrF++ ≥ 35.9        | Strong solution, close to public SOTA (UPD 20.06.2026)                                    |
 
 **Ablation report & experiments:**
 
